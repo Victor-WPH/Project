@@ -1,7 +1,10 @@
-package com.Entity;
+
+package com.itlize.firstProject.Entity;
+
+
+
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,3 +48,4 @@ public class Project {
         this.projectName = projectName;
     }
 }
+

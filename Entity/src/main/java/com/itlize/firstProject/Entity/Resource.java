@@ -1,12 +1,11 @@
-package com.Entity;
+package com.itlize.firstProject.Entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Resources {
+public class Resource {
     @Id
     @GeneratedValue
     private Long resourceID;
@@ -14,18 +13,18 @@ public class Resources {
     private String resourceCode;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "project_Resource", joinColumns = {@JoinColumn(name = "projectResourceID"), @JoinColumn(name = "projectID")},
-    inverseJoinColumns = {@JoinColumn(name = "resourceID")}
-            )
+            inverseJoinColumns = {@JoinColumn(name = "resourceID")}
+    )
     private Set<Project> projects = new HashSet<>();
 
-    public Resources(Long resourceID, String resourceName, String resourceCode, Set<Project> projects) {
+    public Resource(Long resourceID, String resourceName, String resourceCode, Set<Project> projects) {
         this.resourceID = resourceID;
         this.resourceName = resourceName;
         this.resourceCode = resourceCode;
         this.projects = projects;
     }
 
-    public Resources() {
+    public Resource() {
 
     }
 

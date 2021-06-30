@@ -1,4 +1,6 @@
-package com.Entity;
+package com.itlize.firstProject.Entity;
+
+import com.itlize.firstProject.Project;
 
 import javax.persistence.*;
 import java.util.Date;

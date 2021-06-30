@@ -1,5 +1,5 @@
-/*
-package com.Entity;
+
+package com.itlize.firstProject.Entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -40,4 +40,4 @@ public class Project_Resources {
         this.resourceID = resourceID;
     }
 }
-*/
+
