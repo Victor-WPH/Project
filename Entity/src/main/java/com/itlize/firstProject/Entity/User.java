@@ -1,75 +1,74 @@
 package com.itlize.firstProject.Entity;
 
-import com.itlize.firstProject.Project;
-
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+
 
 @Entity
 public class User {
     @Id
     @GeneratedValue
-    private Long UserID;
-    private String UserName;
-    private Date time_created;
-    private Date last_updated;
+    private String user_name;
+    private String title;
+    private String role;
+    private LocalDate time_created;
+    private LocalDate last_updated;
     private String password;
-    @OneToMany(mappedBy = "User", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Project> projects;
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name = "ProjectUser", joinColumns = {@JoinColumn(name = "ProjectUserID"), @JoinColumn(name = "UserID")},
-            inverseJoinColumns = {@JoinColumn(name = "ProjectID")}
 
-    )
-    private Set<Project> project = new HashSet<>();
 
-    public User(Long userID, String userName, Date time_created, Date last_updated, String password, List<Project> projects, Set<Project> project) {
-        UserID = userID;
-        UserName = userName;
+    @ManyToOne
+    Project project = new Project();
+
+    public User(String user_name, String title, String role, LocalDate time_created, LocalDate last_updated, String password) {
+        this.user_name = user_name;
+        this.title = title;
+        this.role = role;
         this.time_created = time_created;
         this.last_updated = last_updated;
         this.password = password;
-        this.projects = projects;
-        this.project = project;
     }
 
     public User() {
 
     }
 
-    public Long getUserID() {
-        return UserID;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setUser_ID(Long userID) {
-        UserID = userID;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setUserName(String userName) {
-        UserName = userName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Date getTime_created() {
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public LocalDate getTime_created() {
         return time_created;
     }
 
-    public void setTime_created(Date time_created) {
+    public void setTime_created(LocalDate time_created) {
         this.time_created = time_created;
     }
 
-    public Date getLast_updated() {
+    public LocalDate getLast_updated() {
         return last_updated;
     }
 
-    public void setLast_updated(Date last_updated) {
+    public void setLast_updated(LocalDate last_updated) {
         this.last_updated = last_updated;
     }
 
@@ -80,5 +79,17 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }
+
+
+
+
 
